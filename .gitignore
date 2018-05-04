@@ -9,3 +9,5 @@ simulation/
 *.done
 *.rpt
 *.summary
+*.vwf
+*.ddb

@@ -1,19 +1,16 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
-use ieee.numeric_std.all;
 
 entity ALU is
 	port(
 		clk: in std_logic;
-		op: in std_logic_vector(1 downto 0);
+		op: in std_logic_vector(1 downto 0);		-- operation code
 		
-		operand_1: in std_logic_vector(1 downto 0);
-		operand_2: in std_logic_vector(1 downto 0);
-		carry_in: in std_logic_vector(1 downto 0);
+		rs: in std_logic_vector(7 downto 0);		-- source register 1
+		rt: in std_logic_vector(7 downto 0);		-- source register 2
 		
-		result: out std_logic_vector(1 downto 0)
-		--carry_out: out std_logic
+		rd: out std_logic_vector(7 downto 0)		-- destination register
 	);
 end ALU;
 
@@ -21,14 +18,14 @@ architecture behavioral of ALU is
 begin
 	process(clk)
 	begin
-		if (op = "00") then
-			result <= operand_1 and operand_2;
-		elsif (op = "01") then
-			result <= operand_1 or operand_2;
-		elsif (op = "10") then
-			result <= operand_1 + operand_2;
-		elsif (op = "11") then
-			result <= operand_1 - operand_2;
+		if (op = "00") then			-- AND Gate
+			rd <= rs and rt;
+		elsif (op = "01") then		-- OR Gate
+			rd <= rs or rt;
+		elsif (op = "10") then		-- ADD
+			rd <= rs + rt;
+		elsif (op = "11") then		-- SUB
+			rd <= rs - rt;
 		end if;
 	end process;
 end behavioral;
