@@ -1,0 +1,4 @@
+*.qsf
+*.qws
+db
+output_files/
