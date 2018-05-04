@@ -6,3 +6,6 @@ output_files/
 incremental_db/
 *.txt
 simulation/
+*.done
+*.rpt
+*.summary
