@@ -2,3 +2,7 @@
 *.qws
 db
 output_files/
+*.bak
+incremental_db/
+*.txt
+simulation/
