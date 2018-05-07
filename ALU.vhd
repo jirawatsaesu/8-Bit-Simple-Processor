@@ -4,7 +4,6 @@ use ieee.std_logic_unsigned.all;
 
 entity ALU is
   port(
-    clk : in std_logic;
     op  : in std_logic_vector(1 downto 0);   -- operation code
 
     rs  : in std_logic_vector(7 downto 0);   -- source register 1
@@ -18,7 +17,7 @@ end ALU;
 architecture behavioral of ALU is
 
 begin
-  process(clk)
+  process(op, rs, rt)
   begin
     if (op = "00") then      -- AND Gate
       rd <= rs and rt;
