@@ -15,14 +15,16 @@ entity Registers is
 
     rs      : out std_logic_vector(7 downto 0);   -- source register 1
     rt      : out std_logic_vector(7 downto 0);    -- source register 2
-    rd		: out std_logic_vector(7 downto 0)
+    rd      : out std_logic_vector(7 downto 0)
   );
 end Registers;
 
 
 architecture behavioral of Registers is
+
   type registerFile is array(0 to 3) of std_logic_vector(7 downto 0);
   signal reg: registerFile;
+
 begin
   process(clk, rst)
   begin
@@ -40,4 +42,5 @@ begin
 
   rs <= reg(to_integer(unsigned(rs_addr)));
   rt <= reg(to_integer(unsigned(rt_addr)));
+
 end behavioral;

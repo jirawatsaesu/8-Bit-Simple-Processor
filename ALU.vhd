@@ -14,7 +14,9 @@ entity ALU is
   );
 end ALU;
 
+
 architecture behavioral of ALU is
+
 begin
   process(clk)
   begin
@@ -28,4 +30,5 @@ begin
       rd <= rs - rt;
     end if;
   end process;
+
 end behavioral;
