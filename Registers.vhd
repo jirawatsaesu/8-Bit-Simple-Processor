@@ -21,12 +21,7 @@ end Registers;
 architecture behavioral of Registers is
 
   type registerFile is array(0 to 3) of std_logic_vector(7 downto 0);
-  signal reg: registerFile := (
-    "00000111", -- 7
-    "00000101", -- 6
-    "00000011", -- 3
-    "00000001"  -- 1
-  );
+  signal reg: registerFile;
 
 begin
   process(clk)

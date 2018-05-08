@@ -11,3 +11,4 @@ simulation/
 *.summary
 *.vwf
 *.ddb
+*.inc

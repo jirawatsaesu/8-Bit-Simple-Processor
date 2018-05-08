@@ -16,7 +16,7 @@ architecture dataflow of mux0 is
 begin
   process(sel, a, b)
   begin
-    if (sel = '0') then
+    if (sel = '1') then
       y <= a;
     else
       y <= b;

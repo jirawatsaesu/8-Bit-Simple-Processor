@@ -20,12 +20,12 @@ architecture behavioral of ALU is
 begin
   process(op, rs, rt)
   begin
-    if (op = "00") then      -- AND Gate
+    if (op = "00") then      -- AND
       result <= rs and rt;
-    elsif (op = "01") then   -- OR Gate
-      result <= rs or rt;
-    elsif (op = "10") then   -- ADD
+    elsif (op = "01") then   -- ADD
       result <= rs + rt;
+    elsif (op = "10") then   -- SUB
+      result <= rs - rt;
     elsif (op = "11") then   -- ADDi
       result <= rs + rt;
     end if;
