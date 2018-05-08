@@ -19,7 +19,7 @@ architecture behavioral of ALU is
   signal result : std_logic_vector(7 downto 0);
 
 begin
-  process(op, rs, rt)
+  process(op)
   begin
     if (op = "00") then      -- AND Gate
       result <= rs and rt;
