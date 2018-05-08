@@ -18,9 +18,9 @@ architecture behavioral of Instruction is
 
   type instruction_set is array(0 to 7) of std_logic_vector(7 downto 0);
   constant instr : instruction_set := (
-    "10000110",
     "00000000",
-    "10011100",
+    "00011000",  -- AND $s0, $s1, $s2
+    "01011010",  -- OR $s1, $s2, $s2
     "00000000",
     "00000000",
     "00000000",
