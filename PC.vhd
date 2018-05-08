@@ -1,31 +1,28 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
 
 entity PC is
   port(
-    clk        : in std_logic;
-    instr_addr : out std_logic_vector(1 downto 0)   -- instruction address
+    clk           : in std_logic;
+    current_instr : in std_logic_vector(2 downto 0);   -- current instruction
+    next_instr    : out std_logic_vector(2 downto 0)   -- next instruction
   );
 end PC;
 
 
 architecture behavioral of PC is
 
-  signal num : std_logic_vector(1 downto 0) := "00";
+  signal next_signal : std_logic_vector(2 downto 0);
 
 begin
   process(clk)
   begin
     if rising_edge(clk) then
-      if (num = "11") then
-        num <= num;
-      else
-        num <= num + "01";
-      end if;
+      next_signal <= std_logic_vector(unsigned(current_instr) + to_unsigned(1, 3));
     end if;
   end process;
 
-  instr_addr <= num;
+  next_instr <= next_signal;
 
 end behavioral;

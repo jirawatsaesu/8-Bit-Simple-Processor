@@ -16,18 +16,22 @@ end ALU;
 
 architecture behavioral of ALU is
 
+  signal result : std_logic_vector(7 downto 0);
+
 begin
   process(op, rs, rt)
   begin
     if (op = "00") then      -- AND Gate
-      rd <= rs and rt;
+      result <= rs and rt;
     elsif (op = "01") then   -- OR Gate
-      rd <= rs or rt;
+      result <= rs or rt;
     elsif (op = "10") then   -- ADD
-      rd <= rs + rt;
+      result <= rs + rt;
     elsif (op = "11") then   -- SUB
-      rd <= rs - rt;
+      result <= rs - rt;
     end if;
   end process;
+
+  rd <= result;
 
 end behavioral;
