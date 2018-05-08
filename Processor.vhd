@@ -14,7 +14,7 @@
 
 -- PROGRAM		"Quartus II 64-Bit"
 -- VERSION		"Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
--- CREATED		"Tue May 08 22:58:02 2018"
+-- CREATED		"Wed May 09 00:35:33 2018"
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.all; 
@@ -25,9 +25,9 @@ ENTITY Processor IS
 	PORT
 	(
 		clk :  IN  STD_LOGIC;
-		current_instruction :  IN  STD_LOGIC_VECTOR(2 DOWNTO 0);
 		write_enable :  OUT  STD_LOGIC;
 		alu_op :  OUT  STD_LOGIC_VECTOR(1 DOWNTO 0);
+		current_instruction :  OUT  STD_LOGIC_VECTOR(2 DOWNTO 0);
 		next_instruction :  OUT  STD_LOGIC_VECTOR(2 DOWNTO 0);
 		op_code :  OUT  STD_LOGIC_VECTOR(1 DOWNTO 0);
 		rd_address :  OUT  STD_LOGIC_VECTOR(1 DOWNTO 0);
@@ -88,24 +88,25 @@ SIGNAL	SYNTHESIZED_WIRE_0 :  STD_LOGIC_VECTOR(1 DOWNTO 0);
 SIGNAL	SYNTHESIZED_WIRE_1 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
 SIGNAL	SYNTHESIZED_WIRE_2 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
 SIGNAL	SYNTHESIZED_WIRE_3 :  STD_LOGIC_VECTOR(1 DOWNTO 0);
-SIGNAL	SYNTHESIZED_WIRE_4 :  STD_LOGIC_VECTOR(2 DOWNTO 0);
-SIGNAL	SYNTHESIZED_WIRE_5 :  STD_LOGIC;
-SIGNAL	SYNTHESIZED_WIRE_6 :  STD_LOGIC_VECTOR(1 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_12 :  STD_LOGIC_VECTOR(2 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_6 :  STD_LOGIC;
 SIGNAL	SYNTHESIZED_WIRE_7 :  STD_LOGIC_VECTOR(1 DOWNTO 0);
 SIGNAL	SYNTHESIZED_WIRE_8 :  STD_LOGIC_VECTOR(1 DOWNTO 0);
-SIGNAL	SYNTHESIZED_WIRE_9 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_9 :  STD_LOGIC_VECTOR(1 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_10 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
 
 
 BEGIN 
-write_enable <= SYNTHESIZED_WIRE_5;
+write_enable <= SYNTHESIZED_WIRE_6;
 alu_op <= SYNTHESIZED_WIRE_0;
-next_instruction <= SYNTHESIZED_WIRE_4;
+current_instruction <= SYNTHESIZED_WIRE_12;
+next_instruction <= SYNTHESIZED_WIRE_12;
 op_code <= SYNTHESIZED_WIRE_3;
-rd_address <= SYNTHESIZED_WIRE_6;
-rd_value <= SYNTHESIZED_WIRE_9;
-rs_address <= SYNTHESIZED_WIRE_7;
+rd_address <= SYNTHESIZED_WIRE_7;
+rd_value <= SYNTHESIZED_WIRE_10;
+rs_address <= SYNTHESIZED_WIRE_8;
 rs_value <= SYNTHESIZED_WIRE_1;
-rt_address <= SYNTHESIZED_WIRE_8;
+rt_address <= SYNTHESIZED_WIRE_9;
 rt_value <= SYNTHESIZED_WIRE_2;
 
 
@@ -114,36 +115,36 @@ b2v_arithmetic_logic_unit : alu
 PORT MAP(op => SYNTHESIZED_WIRE_0,
 		 rs => SYNTHESIZED_WIRE_1,
 		 rt => SYNTHESIZED_WIRE_2,
-		 rd => SYNTHESIZED_WIRE_9);
+		 rd => SYNTHESIZED_WIRE_10);
 
 
 b2v_control_unit : control
 PORT MAP(instr => SYNTHESIZED_WIRE_3,
-		 reg_wr => SYNTHESIZED_WIRE_5,
+		 reg_wr => SYNTHESIZED_WIRE_6,
 		 alu_op => SYNTHESIZED_WIRE_0);
 
 
 b2v_instruction_memory : instruction
-PORT MAP(instr_addr => SYNTHESIZED_WIRE_4,
+PORT MAP(instr_addr => SYNTHESIZED_WIRE_12,
 		 op => SYNTHESIZED_WIRE_3,
-		 rd_addr => SYNTHESIZED_WIRE_6,
-		 rs_addr => SYNTHESIZED_WIRE_7,
-		 rt_addr => SYNTHESIZED_WIRE_8);
+		 rd_addr => SYNTHESIZED_WIRE_7,
+		 rs_addr => SYNTHESIZED_WIRE_8,
+		 rt_addr => SYNTHESIZED_WIRE_9);
 
 
 b2v_program_counter : pc
 PORT MAP(clk => clk,
-		 current_instr => current_instruction,
-		 next_instr => SYNTHESIZED_WIRE_4);
+		 current_instr => SYNTHESIZED_WIRE_12,
+		 next_instr => SYNTHESIZED_WIRE_12);
 
 
 b2v_registers_file : registers
 PORT MAP(clk => clk,
-		 wr => SYNTHESIZED_WIRE_5,
-		 rd_addr => SYNTHESIZED_WIRE_6,
-		 rs_addr => SYNTHESIZED_WIRE_7,
-		 rt_addr => SYNTHESIZED_WIRE_8,
-		 wr_data => SYNTHESIZED_WIRE_9,
+		 wr => SYNTHESIZED_WIRE_6,
+		 rd_addr => SYNTHESIZED_WIRE_7,
+		 rs_addr => SYNTHESIZED_WIRE_8,
+		 rt_addr => SYNTHESIZED_WIRE_9,
+		 wr_data => SYNTHESIZED_WIRE_10,
 		 rs => SYNTHESIZED_WIRE_1,
 		 rt => SYNTHESIZED_WIRE_2);
 

@@ -31,7 +31,7 @@ architecture behavioral of Registers is
 begin
   process(clk)
   begin
-    if rising_edge(clk) then
+    if falling_edge(clk) then
       if (wr = '1') then
         reg(to_integer(unsigned(rd_addr))) <= wr_data;
       end if;

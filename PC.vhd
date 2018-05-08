@@ -18,7 +18,7 @@ architecture behavioral of PC is
 begin
   process(clk)
   begin
-    if rising_edge(clk) then
+    if falling_edge(clk) then
       next_signal <= std_logic_vector(unsigned(current_instr) + to_unsigned(1, 3));
     end if;
   end process;
