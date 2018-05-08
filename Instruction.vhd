@@ -9,7 +9,8 @@ entity Instruction is
     op         : out std_logic_vector(1 downto 0);   -- operation code
     rs_addr    : out std_logic_vector(1 downto 0);   -- source register 1 address
     rt_addr    : out std_logic_vector(1 downto 0);   -- source register 2 address
-    rd_addr    : out std_logic_vector(1 downto 0)    -- destination register address
+    rd_addr    : out std_logic_vector(1 downto 0);   -- destination register address
+    data       : out std_logic_vector(3 downto 0)
   );
 end Instruction;
 
@@ -34,5 +35,7 @@ begin
   rs_addr <= instr(to_integer(unsigned(instr_addr)))(5 downto 4);
   rt_addr <= instr(to_integer(unsigned(instr_addr)))(3 downto 2);
   rd_addr <= instr(to_integer(unsigned(instr_addr)))(1 downto 0);
+
+  data <= instr(to_integer(unsigned(instr_addr)))(3 downto 0);
 
 end behavioral;

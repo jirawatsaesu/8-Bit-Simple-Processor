@@ -8,7 +8,6 @@ entity ALU is
 
     rs  : in std_logic_vector(7 downto 0);   -- source register 1
     rt  : in std_logic_vector(7 downto 0);   -- source register 2
-
     rd  : out std_logic_vector(7 downto 0)   -- destination register
   );
 end ALU;
@@ -19,7 +18,7 @@ architecture behavioral of ALU is
   signal result : std_logic_vector(7 downto 0);
 
 begin
-  process(op)
+  process(op, rs, rt)
   begin
     if (op = "00") then      -- AND Gate
       result <= rs and rt;
@@ -27,8 +26,8 @@ begin
       result <= rs or rt;
     elsif (op = "10") then   -- ADD
       result <= rs + rt;
-    elsif (op = "11") then   -- SUB
-      result <= rs - rt;
+    elsif (op = "11") then   -- ADDi
+      result <= rs + rt;
     end if;
   end process;
 
