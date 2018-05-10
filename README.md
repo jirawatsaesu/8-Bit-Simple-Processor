@@ -3,9 +3,13 @@
 
 
 ## Program Counter (PC)
-Send the address of current instruction to **Instruction Memory**.
+Send the address of current instruction to **Instruction Memory** and increase every falling edge of clock.
 ```
-    next_address <= current_address + 1
+    if falling_edge(clock) then
+
+        next_address <= current_address + 1
+
+    end if
 ```
 
 
@@ -41,9 +45,13 @@ R-type instruction splitted.
     src2_value <= registers(src2_address)
 ```
 
-* Write 8-bit data result from **ALU** to destination register.
+* Write 8-bit data result from **ALU** to destination register every falling edge of clock.
 ```
-    registers(dst_address) <= result
+    if falling_edge(clock) then
+
+        registers(dst_address) <= result
+
+    end if
 ```
 
 
