@@ -5,7 +5,6 @@ use ieee.numeric_std.all;
 entity Registers is
   port(
     clk     : in std_logic;
-    wr      : in std_logic;                       -- write register control
 
     rs_addr : in std_logic_vector(1 downto 0);    -- source register 1 address
     rt_addr : in std_logic_vector(1 downto 0);    -- source register 2 address
@@ -27,9 +26,7 @@ begin
   process(clk)
   begin
     if falling_edge(clk) then
-      if (wr = '1') then
-        reg(to_integer(unsigned(rd_addr))) <= wr_data;
-      end if;
+      reg(to_integer(unsigned(rd_addr))) <= wr_data;
     end if;
   end process;
 
