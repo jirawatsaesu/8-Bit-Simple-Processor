@@ -1,5 +1,12 @@
 # 8-Bit Simple Processor
-8-bit simple processor designed using the VHDL language mainly consists of 4 8-bit registers, a 8-word memory with 8-bit words, a control unit, and an arithmetic logic unit (ALU).
+FPGA-based 8-bit simple processor designed using the VHDL language
+
+Mainly components
+* Program counter (PC)
+* 8 Instructions with 8-bit
+* 4 8-bit registers
+* Arithmetic logic unit (ALU)
+* Control unit
 
 > [RTL view](https://drive.google.com/file/d/1rpwMigKBZJ3UliGxDvjsoxlWWDj-KijM/view)
 
